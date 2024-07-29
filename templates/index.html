@@ -15,12 +15,13 @@
         <script type="text/javascript" src="static/script/script.js"></script>
         
     </head>
-    <body>
-        <h1>Akropolis</h1>
+    <body> 
         <div class="container">
-
+            
             <form action="score.html" name="jeu" method="get" onsubmit="return onSubmitForm()"> <!-- pas besoin de mettre la méthode ni le onSubmit car on fait directement appel au serveur-->
+                <h1>Akropolis</h1>
                 <div class="input-group mb-3">
+                    
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                     <input id="Username" name="username" type="text" class="form-control" placeholder="Nom du joueur">
                 </div>
@@ -32,13 +33,13 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-stars"></i> &nbsp; Etoiles</span>
-                    <input id="Stars" name ="stars" type="number" class="form-control" placeholder="Nombre d'étoiles" min="0" max="30" value="0">
+                    <input id="Stars" name ="stars" type="number" class="form-control" placeholder="Nombre d'étoiles" min="1" max="30" value="1">
                 </div>
 
                 <table class="table table-striped" id="Quartiers">
                     <thead>
                       <tr>
-                        <th scope="col">Niveau</th>
+                        <th scope="col"><i class="bi bi-chevron-expand"></i> Niveau</th>
                         <th scope="col"><i class="bi bi-house-door"></i> &nbsp; Habitations</th>
                         <th scope="col"><i class="bi bi-shop"></i> &nbsp; Marchés</th>
                         <th scope="col"><i class="bi bi-buildings"></i> &nbsp; Casernes</th>
@@ -115,8 +116,6 @@
 
                 <div class="col-12">
                     <!--Méthode pour soumettre le formulaire et récupérer le score dans la page résultat-->
-                    <!--<button class="btn btn-outline-danger" type="submit">Calculer le score</button>-->
-
                     <!--Méthode pour appeler la méthode REST qui calcule le score-->
                     <button class="btn btn-outline-primary" type="button" onclick="getComputeScore()">Calculer le score</button>
                 </div>                

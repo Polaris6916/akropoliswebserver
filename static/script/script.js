@@ -1,13 +1,7 @@
-// Obsolète, car maintenant c'est la requête au serveur getComputeScore qui est utilisée
-function onSubmitForm() {
-  encodeArray(); // Refresh de l'encodage des valeurs du tableau
-  return true; // Renvoyer true permet d'autoriser la soumession du formulaire normalement
-}
-
-async function getConfig() {
-  const response = await fetch('/config');
-  const config = await response.json();
-  return config.serverUrl;
+async function getConfig() { //Fonction permettant la récupération des informations de configuration
+  const response = await fetch('/config'); //Requête le serveur web pour la récupération du fichier
+  const config = await response.json(); //Extraction des informations du JSON
+  return config.serverUrl; //Retourne l'adresse ip du serveur
 }
 
 // encode le tableau en une chaîne de caractères
@@ -116,13 +110,13 @@ function newCell(rowName){
 
 // Appel au serveur de la méthode permettant d'évaluer le score à partir des paramètres transmis
 async function getComputeScore() {
-  const SERVER_URL = await getConfig();
+  const SERVER_URL = await getConfig(); //Récupération de l'adresse ip du serveur
 
   encodeArray(); // Refresh de l'encodage des valeurs du tableau
 
   //création de l'url avec les parametres dans la route
-  var url = SERVER_URL + "/getScore.html/" + document.getElementById("Username").value //Il faut remplacer par l'adresse ip du fichier js
-          + "/" + document.getElementById("Stones").value                                         //(pour une utilisation uniquement local : http://localhost:5400/) 
+  var url = SERVER_URL + "/getScore.html/" + document.getElementById("Username").value
+          + "/" + document.getElementById("Stones").value
           + "/" + document.getElementById("Stars").value
           + "/" + document.getElementById("QuartiersStr").value;
   

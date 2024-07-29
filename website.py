@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+#Importation des bibliothèque
+from flask import Flask, render_template, request, jsonify #Serveur web
 from werkzeug.utils import send_from_directory
-from akropolis_point_classe import *
+from akropolis_point_classe import * #Calcule des points
 import os
 from dotenv import load_dotenv
-from configenv import update_env_file
+from configenv import update_env_file #Configuration de l'adresse ip du serveur
 
-update_env_file()
+update_env_file()#Modification du serveur web
 
 # Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
@@ -15,7 +16,7 @@ app = Flask(__name__)
 # Récupérer l'URL du serveur depuis les variables d'environnement
 SERVER_URL = os.getenv('SERVER_URL', 'http://localhost:5400')
 
-@app.route('/config', methods=['GET'])
+@app.route('/config', methods=['GET']) #Route pour les configuration du serveur web
 def get_config():
     return jsonify(serverUrl=SERVER_URL)
 
@@ -46,4 +47,4 @@ def getScore(username,stones,stars,quartiersStr):
 # lance le serveur web
 print("Start Flask")
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5400)
+    app.run(debug=False, host='0.0.0.0', port=5400)
