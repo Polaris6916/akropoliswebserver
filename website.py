@@ -4,21 +4,11 @@ from werkzeug.utils import send_from_directory
 from akropolis_point_classe import * #Calcule des points
 import os
 from dotenv import load_dotenv
-from configenv import update_env_file #Configuration de l'adresse ip du serveur
-
-update_env_file()#Modification du serveur web
 
 # Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
 
 app = Flask(__name__)
-
-# Récupérer l'URL du serveur depuis les variables d'environnement
-SERVER_URL = os.getenv('SERVER_URL', 'http://localhost:5400')
-
-@app.route('/config', methods=['GET']) #Route pour les configuration du serveur web
-def get_config():
-    return jsonify(serverUrl=SERVER_URL)
 
 @app.route("/static/<path:path>") #Route pour les appels des pages statiques
 def static_dir(path):

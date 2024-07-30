@@ -1,9 +1,3 @@
-async function getConfig() { //Fonction permettant la récupération des informations de configuration
-  const response = await fetch('/config'); //Requête le serveur web pour la récupération du fichier
-  const config = await response.json(); //Extraction des informations du JSON
-  return config.serverUrl; //Retourne l'adresse ip du serveur
-}
-
 // encode le tableau en une chaîne de caractères
 function encodeArray() {
   // Init
@@ -110,20 +104,16 @@ function newCell(rowName){
 
 // Appel au serveur de la méthode permettant d'évaluer le score à partir des paramètres transmis
 async function getComputeScore() {
-  const SERVER_URL = await getConfig(); //Récupération de l'adresse ip du serveur
-
   encodeArray(); // Refresh de l'encodage des valeurs du tableau
 
   //création de l'url avec les parametres dans la route
-  var url = SERVER_URL + "/getScore.html/" + document.getElementById("Username").value
+  var url ="/getScore.html/" + document.getElementById("Username").value
           + "/" + document.getElementById("Stones").value
           + "/" + document.getElementById("Stars").value
           + "/" + document.getElementById("QuartiersStr").value;
-  
   
   const response = await fetch(url);
   const myScore = await response.text(); //extract text answer from the http response
   console.log(myScore);
   document.getElementById("scoreAffichage").innerText = "Bravo "+ document.getElementById("Username").value + ", votre score est de : " + myScore; //Affichage du score au joueur
-
 }
