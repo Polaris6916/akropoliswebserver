@@ -1,5 +1,5 @@
 #Importation des bibliothèque
-from flask import Flask, render_template, request, jsonify #Serveur web
+from flask import Flask, render_template #Serveur web
 from werkzeug.utils import send_from_directory
 from akropolis_point_classe import * #Calcule des points
 import os
@@ -17,6 +17,7 @@ def static_dir(path):
 @app.route('/') #Route par défaut lorsque on arrive sur le site sans paramètre
 def index():
     return render_template('index.html') #Renvoie l'index.html
+
 
 @app.route('/score.html/', methods=['GET']) #Route pour la page résultat (obsolète car on utilise la route getScore)
 def computePlayerScore():
